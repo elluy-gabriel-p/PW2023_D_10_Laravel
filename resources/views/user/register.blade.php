@@ -113,13 +113,13 @@
                 <img src="{{ asset('img/IMPERIAL LOGO.png') }}" alt="Logo" class="imperial-logo">
             </a>
         </div>
+        @if (session('message'))
+            <div class="alert alert-success">{{ session('message') }}</div>
+        @endif
         <div class="wrapper">
             <div class="form-box Registration">
                 <h1>Register</h1>
                 <hr>
-                @if (session('message'))
-                    <div class="alert alert-success">{{ session('message') }}</div>
-                @endif
                 <form class="row g-3 needs-validation" action="{{ route('actionRegister') }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf

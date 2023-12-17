@@ -7,7 +7,6 @@ use App\Models\User;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
-use App\Models\Booking;
 use Faker\Core\Files;
 
 class UserController extends Controller

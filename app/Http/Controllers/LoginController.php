@@ -34,9 +34,7 @@ class LoginController extends Controller
         if (Auth::attempt($data)) {
             $user = Auth::user();
 
-            if ($user->status == 'admin' && $user->active) {
-                return redirect('dashboard');
-            } else if ($user->active) {
+            if ($user->active) {
                 return redirect('home');
             } else {
                 Auth::logout();
@@ -46,6 +44,32 @@ class LoginController extends Controller
         } else {
             Session::flash('error', 'Email atau Password salah');
             return redirect('/');
+        }
+    }
+
+    public function actionLoginAdmin(Request $request)
+    {
+        $data = [
+            'email' => $request->input('email'),
+            'password' => $request->input('password'),
+        ];
+        if (Auth::attempt($data)) {
+            $user = Auth::user();
+
+            if ($user->status == 'admin' && $user->active) {
+                return redirect('dashboard');
+            } else if ($user->status == 'user' && $user->active) {
+                Auth::logout();
+                Session::flash('error', 'Anda tidak memiliki akses ke halaman ini');
+                return redirect('adminLogin');
+            } else {
+                Auth::logout();
+                Session::flash('error', 'Akun anda belum dierifikasi. Silahkan cek email anda');
+                return redirect('adminLogin');
+            }
+        } else {
+            Session::flash('error', 'Email atau Password salah');
+            return redirect('adminLogin');
         }
     }
     public function actionLogout()
