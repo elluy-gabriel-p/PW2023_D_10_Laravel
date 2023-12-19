@@ -77,7 +77,7 @@ Route::get('/about', function () {
 
 Route::get('/profile', function () {
     return view('user/profile');
-});
+})->middleware('auth');
 
 // Route::get('/editProfile', function () {
 //     return view('user/editProfile');
@@ -139,6 +139,46 @@ Route::get('/ubahUlasan', function () {
 //                 "Double the Comfort, Twice the Enjoyment. Our Twin Room is Ideal for Travelers Seeking Individual Space and Comfort. With Two Cozy Beds and Thoughtful Amenities, This Room Offers the Perfect Balance of Togetherness and Personal Relaxation.",
 //                 "tipe" => "Twin Room",
 //                 "status" => "tersedia"
+//             ],
+//         ],
+//     ]);
+// });
+
+// Route::get('/booking', function () {
+//     return view('user/booking', [
+//         'bookings' => [
+//             [
+//                 'bookingID' => '12345',
+//                 'checkInDate' => 'Januari 25, 2024',
+//                 'checkOutDate' => 'Januari 26, 2024',
+//                 'roomType' => 'President Room',
+//                 'guestName' => 'John Doe',
+//                 'guestEmail' => 'john@gmail.com',
+//                 'guestPhone' => '03249342938',
+//                 'people' => '2',
+//                 'totalAmount' => '2.500.000',
+//             ],
+//             [
+//                 'bookingID' => '67890',
+//                 'checkInDate' => 'Februari 17, 2024',
+//                 'checkOutDate' => 'Februari 20, 2024',
+//                 'roomType' => 'Family Room',
+//                 'guestName' => 'Alice Smith',
+//                 'guestEmail' => 'alice@yahoo.com',
+//                 'guestPhone' => '0437932847',
+//                 'people' => '3',
+//                 'totalAmount' => '3.500.000',
+//             ],
+//             [
+//                 'bookingID' => '13579',
+//                 'checkInDate' => 'Maret 10, 2024',
+//                 'checkOutDate' => 'Maret 14, 2024',
+//                 'roomType' => 'Twin Room',
+//                 'guestName' => 'Bob Johnson',
+//                 'guestEmail' => 'bob@outlook.com',
+//                 'guestPhone' => '083623474234',
+//                 'people' => '2',
+//                 'totalAmount' => '1.000.00',
 //             ],
 //         ],
 //     ]);

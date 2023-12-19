@@ -24,3 +24,5 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::put('/user/{id}', [App\Http\Controllers\Api\UsersController::class, 'update']);
     Route::delete('/user/{id}', [App\Http\Controllers\Api\UsersController::class, 'destroy']);
 });
+
+Route::post('/book', [App\Http\Controllers\Api\BookingController::class, 'store']);
