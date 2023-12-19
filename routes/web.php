@@ -44,6 +44,7 @@ Route::resource('/profile', ProfileController::class);
 Route::resource('/booking', BookingController::class);
 
 Route::resource('/review', ReviewController::class);
+Route::get('/admin/review', [ReviewController::class, 'indexAdmin'])->name('indexAdmin')->middleware('auth');
 
 Route::resource('/kamar', KamarController::class);
 

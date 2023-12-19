@@ -17,6 +17,12 @@ class ReviewController extends Controller
         ]);
     }
 
+    public function indexAdmin()
+    {
+        return view('admin.review', [
+            'reviews' => Review::latest()->paginate(5)
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -82,6 +88,6 @@ class ReviewController extends Controller
     {
         Review::destroy($review->id);
 
-        return redirect('/review')->with('success', 'Review telah dihapus');
+        return back()->with('success', 'Review telah dihapus');
     }
 }
