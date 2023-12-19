@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3307
--- Generation Time: Dec 18, 2023 at 10:29 PM
+-- Host: 127.0.0.1
+-- Generation Time: Dec 17, 2023 at 04:53 PM
 -- Server version: 10.4.28-MariaDB
--- PHP Version: 8.1.17
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,26 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_d_10`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `bookings`
---
-
-CREATE TABLE `bookings` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `guestName` varchar(255) NOT NULL,
-  `guestPhone` varchar(255) NOT NULL,
-  `guestEmail` varchar(255) NOT NULL,
-  `roomType` varchar(255) NOT NULL,
-  `people` int(11) NOT NULL,
-  `checkInDate` date NOT NULL,
-  `checkOutDate` date NOT NULL,
-  `totalAmount` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -64,7 +44,7 @@ CREATE TABLE `failed_jobs` (
 --
 
 CREATE TABLE `kamars` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id` int(11) NOT NULL,
   `image` varchar(255) NOT NULL,
   `jenis` varchar(255) NOT NULL,
   `harga` int(11) NOT NULL,
@@ -73,7 +53,7 @@ CREATE TABLE `kamars` (
   `status` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -100,10 +80,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (6, '2016_06_01_000004_create_oauth_clients_table', 1),
 (7, '2016_06_01_000005_create_oauth_personal_access_clients_table', 1),
 (8, '2019_08_19_000000_create_failed_jobs_table', 1),
-(9, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(10, '2023_12_17_220750_create_kamars_table', 1),
-(11, '2023_12_18_163559_create_bookings_table', 1),
-(12, '2023_12_19_033448_create_reviews_table', 1);
+(9, '2019_12_14_000001_create_personal_access_tokens_table', 1);
 
 -- --------------------------------------------------------
 
@@ -218,21 +195,6 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reviews`
---
-
-CREATE TABLE `reviews` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `reviewerName` varchar(255) NOT NULL,
-  `rating` int(11) NOT NULL,
-  `comment` text NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `users`
 --
 
@@ -256,12 +218,6 @@ CREATE TABLE `users` (
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `bookings`
---
-ALTER TABLE `bookings`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -331,12 +287,6 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Indexes for table `reviews`
---
-ALTER TABLE `reviews`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -348,12 +298,6 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `bookings`
---
-ALTER TABLE `bookings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -363,13 +307,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `kamars`
 --
 ALTER TABLE `kamars`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `oauth_clients`
@@ -387,12 +331,6 @@ ALTER TABLE `oauth_personal_access_clients`
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `reviews`
---
-ALTER TABLE `reviews`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --

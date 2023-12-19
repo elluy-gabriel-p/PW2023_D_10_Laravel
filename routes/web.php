@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KamarController;
+use App\Http\Controllers\RoomController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
@@ -43,10 +44,11 @@ Route::resource('/profile', ProfileController::class);
 
 Route::resource('/booking', BookingController::class);
 
-Route::resource('/review', ReviewController::class);
-Route::get('/admin/review', [ReviewController::class, 'indexAdmin'])->name('indexAdmin')->middleware('auth');
+Route::resource('/revew', ReviewController::class);
 
 Route::resource('/kamar', KamarController::class);
+
+Route::resource('/room', RoomController::class);
 
 
 // Route::get('/', function () {
@@ -75,11 +77,11 @@ Route::get('/about', function () {
 
 Route::get('/profile', function () {
     return view('user/profile');
-})->middleware('auth');
-
-Route::get('/editProfile', function () {
-    return view('user/editProfile');
 });
+
+// Route::get('/editProfile', function () {
+//     return view('user/editProfile');
+// });
 
 Route::get('/ulasanKamar', function () {
     return view('user/ulasanKamar');
@@ -93,94 +95,94 @@ Route::get('/ubahUlasan', function () {
     return view('user/formEditUlasan');
 });
 
-Route::get('/room', function () {
-    return view('user/room', [
-        'rooms' => [
-            [
-                'id' => 1,
-                'featured_photo' => asset('img/room1.png'),
-                'price' => '1.000.000',
-                "total_beds" => 2,
-                "deskripsi" => "Welcome to the Presidential Room, Where Luxury Meets Elegance. Our Most Exclusive Accommodation Offers Impeccable Comfort and Unparalleled Opulence. Experience the Epitome of Grandeur and Unwind in Style in the Presidential Room.",
-                "tipe" => "President Room",
-                "status" => "terisi"
-            ],
-
-            [
-                'id' => 2,
-                'featured_photo' => asset('img/room2.jpg'),
-                'price' => '750.000',
-                "total_beds" => 3,
-                "deskripsi" =>
-                "Experience Quality Time Together in Our Spacious Family Room. Designed with Your Comfort and Convenience in Mind, Our Family Room Provides a Cozy Retreat for You and Your Loved Ones. Create Cherished Memories with Your Family in Our Welcoming Accommodation.",
-                "tipe" => "Family Room",
-                "status" => "tersedia"
-            ],
-
-            [
-                'id' => 3,
-                'featured_photo' => asset('img/room3.jpg'),
-                'price' => '250.000',
-                "total_beds" => 1,
-                "deskripsi" =>
-                "Discover Tranquil Simplicity in Our Single Room. Perfect for Solo Travelers, Our Single Room Offers a Cozy Sanctuary for Rest and Relaxation. Experience Comfort and Privacy in Your Personal Haven.",
-                "tipe" => "Single Room",
-                "status" => "terisi"
-            ],
-
-            [
-                'id' => 4,
-                'featured_photo' => asset('img/room4.jpg'),
-                'price' => '500.000',
-                "total_beds" => 2,
-                "deskripsi" =>
-                "Double the Comfort, Twice the Enjoyment. Our Twin Room is Ideal for Travelers Seeking Individual Space and Comfort. With Two Cozy Beds and Thoughtful Amenities, This Room Offers the Perfect Balance of Togetherness and Personal Relaxation.",
-                "tipe" => "Twin Room",
-                "status" => "tersedia"
-            ],
-        ],
-    ]);
-});
-
-// Route::get('/booking', function () {
-//     return view('user/booking', [
-//         'bookings' => [
+// Route::get('/room', function () {
+//     return view('user/room', [
+//         'rooms' => [
 //             [
-//                 'bookingID' => '12345',
-//                 'checkInDate' => 'Januari 25, 2024',
-//                 'checkOutDate' => 'Januari 26, 2024',
-//                 'roomType' => 'President Room',
-//                 'guestName' => 'John Doe',
-//                 'guestEmail' => 'john@gmail.com',
-//                 'guestPhone' => '03249342938',
-//                 'people' => '2',
-//                 'totalAmount' => '2.500.000',
+//                 'id' => 1,
+//                 'featured_photo' => asset('img/room1.png'),
+//                 'price' => '1.000.000',
+//                 "total_beds" => 2,
+//                 "deskripsi" => "Welcome to the Presidential Room, Where Luxury Meets Elegance. Our Most Exclusive Accommodation Offers Impeccable Comfort and Unparalleled Opulence. Experience the Epitome of Grandeur and Unwind in Style in the Presidential Room.",
+//                 "tipe" => "President Room",
+//                 "status" => "terisi"
 //             ],
+
 //             [
-//                 'bookingID' => '67890',
-//                 'checkInDate' => 'Februari 17, 2024',
-//                 'checkOutDate' => 'Februari 20, 2024',
-//                 'roomType' => 'Family Room',
-//                 'guestName' => 'Alice Smith',
-//                 'guestEmail' => 'alice@yahoo.com',
-//                 'guestPhone' => '0437932847',
-//                 'people' => '3',
-//                 'totalAmount' => '3.500.000',
+//                 'id' => 2,
+//                 'featured_photo' => asset('img/room2.jpg'),
+//                 'price' => '750.000',
+//                 "total_beds" => 3,
+//                 "deskripsi" =>
+//                 "Experience Quality Time Together in Our Spacious Family Room. Designed with Your Comfort and Convenience in Mind, Our Family Room Provides a Cozy Retreat for You and Your Loved Ones. Create Cherished Memories with Your Family in Our Welcoming Accommodation.",
+//                 "tipe" => "Family Room",
+//                 "status" => "tersedia"
 //             ],
+
 //             [
-//                 'bookingID' => '13579',
-//                 'checkInDate' => 'Maret 10, 2024',
-//                 'checkOutDate' => 'Maret 14, 2024',
-//                 'roomType' => 'Twin Room',
-//                 'guestName' => 'Bob Johnson',
-//                 'guestEmail' => 'bob@outlook.com',
-//                 'guestPhone' => '083623474234',
-//                 'people' => '2',
-//                 'totalAmount' => '1.000.00',
+//                 'id' => 3,
+//                 'featured_photo' => asset('img/room3.jpg'),
+//                 'price' => '250.000',
+//                 "total_beds" => 1,
+//                 "deskripsi" =>
+//                 "Discover Tranquil Simplicity in Our Single Room. Perfect for Solo Travelers, Our Single Room Offers a Cozy Sanctuary for Rest and Relaxation. Experience Comfort and Privacy in Your Personal Haven.",
+//                 "tipe" => "Single Room",
+//                 "status" => "terisi"
+//             ],
+
+//             [
+//                 'id' => 4,
+//                 'featured_photo' => asset('img/room4.jpg'),
+//                 'price' => '500.000',
+//                 "total_beds" => 2,
+//                 "deskripsi" =>
+//                 "Double the Comfort, Twice the Enjoyment. Our Twin Room is Ideal for Travelers Seeking Individual Space and Comfort. With Two Cozy Beds and Thoughtful Amenities, This Room Offers the Perfect Balance of Togetherness and Personal Relaxation.",
+//                 "tipe" => "Twin Room",
+//                 "status" => "tersedia"
 //             ],
 //         ],
 //     ]);
 // });
+
+Route::get('/booking', function () {
+    return view('user/booking', [
+        'bookings' => [
+            [
+                'bookingID' => '12345',
+                'checkInDate' => 'Januari 25, 2024',
+                'checkOutDate' => 'Januari 26, 2024',
+                'roomType' => 'President Room',
+                'guestName' => 'John Doe',
+                'guestEmail' => 'john@gmail.com',
+                'guestPhone' => '03249342938',
+                'people' => '2',
+                'totalAmount' => '2.500.000',
+            ],
+            [
+                'bookingID' => '67890',
+                'checkInDate' => 'Februari 17, 2024',
+                'checkOutDate' => 'Februari 20, 2024',
+                'roomType' => 'Family Room',
+                'guestName' => 'Alice Smith',
+                'guestEmail' => 'alice@yahoo.com',
+                'guestPhone' => '0437932847',
+                'people' => '3',
+                'totalAmount' => '3.500.000',
+            ],
+            [
+                'bookingID' => '13579',
+                'checkInDate' => 'Maret 10, 2024',
+                'checkOutDate' => 'Maret 14, 2024',
+                'roomType' => 'Twin Room',
+                'guestName' => 'Bob Johnson',
+                'guestEmail' => 'bob@outlook.com',
+                'guestPhone' => '083623474234',
+                'people' => '2',
+                'totalAmount' => '1.000.00',
+            ],
+        ],
+    ]);
+});
 
 
 Route::get('/buatBooking', function () {
@@ -238,17 +240,17 @@ Route::get('/dashboard', function () {
 //         ],
 //     ]);
 // });
-Route::get('/editUser', function () {
-    return view('admin/editUser');
-});
+// Route::get('/editUser', function () {
+//     return view('admin/editUser');
+// });
 
-Route::get('/editKamar', function () {
-    return view('admin/editKamar');
-});
+// Route::get('/editKamar', function () {
+//     return view('admin/editKamar');
+// });
 
-Route::get('/addKamar', function () {
-    return view('admin/addKamar');
-});
+// Route::get('/addKamar', function () {
+//     return view('admin/addKamar');
+// });
 
 // Route::get('/kamar', function () {
 //     return view('admin/kamar', [

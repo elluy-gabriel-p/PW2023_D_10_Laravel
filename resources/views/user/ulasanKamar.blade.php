@@ -134,47 +134,127 @@
             </div>
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="click">
-                        <a href="/buatUlasan" class="btn-review">BUAT ULASAN</a>
-                    </div>
-                    @if (session()->has('success'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            {{ session('success') }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    @endif
-                    @forelse ($reviews as $review)
-                        <div class="col-lg-12 card">
-                            <div class="review-box">
-                                <div class="review-content text-center">
-                                    <p style="font-size: 24px">{{ $review->reviewerName }}</p>
-                                    <div class="stars">
-                                        @for ($i = 1; $i <= $review->rating; $i++)
-                                            <span class="fa fa-star checked"></span>
-                                        @endfor
-                                    </div>
-                                    <p style="font-size: 16px">{{ $review->comment }}</p>
-                                    <div class="edit-delete-buttons">
-                                        <a href="/review/{{ $review->id }}/edit" class="btn btn-edit">
-                                            <i class="fa fa-pencil"></i> Edit</a>
-                                        <form action="/review/{{ $review->id }}" method="post" class="d-inline">
-                                            @method('delete')
-                                            @csrf
-                                            <button class="btn btn-delete"
-                                                onclick="return confirm('Apakah Anda Yakin Ingin menghapus review ini?')">
-                                                <i class="fa fa-trash"></i> Delete
-                                            </button>
-                                        </form>
-                                    </div>
+                    <div class="col-lg-12 card">
+                        <div class="review-box">
+                            <div class="review-content text-center">
+                                <p style="font-size: 24px">Rizki Dikta Hermanto</p>
+                                <div class="stars">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </div>
+                                <p style="font-size: 16px">Pertama-tama, letaknya sangat strategis. Hotel ini terletak
+                                    di
+                                    kawasan yang teduh dan dekat dengan berbagai objek wisata terkenal. Saya sangat
+                                    menghargai kemudahan akses ke tempat-tempat menarik di sekitarnya, sehingga saya
+                                    bisa
+                                    menghabiskan waktu dengan lebih efisien dan mendapatkan pengalaman penuh dalam
+                                    perjalanan saya. Saya baru-baru ini menginap di sebuah hotel bintang 7 yang luar
+                                    biasa
+                                    dan saya sangat terkesan dengan pengalaman menginap saya di sana. Dari awal hingga
+                                    akhir, hotel ini memenuhi semua harapan saya dan bahkan melampaui ekspektasi.
+                                    Kamar yang saya tempati sangatlah nyaman dan luas. Dekorasinya modern dan elegan,
+                                    menciptakan suasana yang menyenangkan dan relaksasi. Tempat tidur yang empuk dan
+                                    fasilitas lainnya, seperti televisi layar datar dan akses Wi-Fi gratis, membuat saya
+                                    betah berada di kamar selama berjam-jam</p>
+                                <div class="edit-delete-buttons">
+                                    <a href="/ubahUlasan" class="btn-edit" title="Edit Review"><i class="fa fa-pencil"></i>
+                                        Edit</a>
+                                    <a href="#" class="btn-delete" title="Delete Review"><i class="fa fa-trash"></i>
+                                        Delete</a>
                                 </div>
                             </div>
                         </div>
-                    @empty
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            Belum ada review
+                    </div>
+                    <div class="col-lg-12 card">
+                        <div class="review-box">
+                            <div class="review-content text-center">
+                                <p style="font-size: 24px">Alvin Dwiwasdani</p>
+                                <div class="stars">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </div>
+                                <p style="font-size: 16px">Tempat yang nyaman dan strategis, hotel yang sangat luas di
+                                    pusat
+                                    kota jogja, mau kemana mana dekat, pelayanan yang ramah dan memuaskan, dan kita
+                                    dapat
+                                    highfloor room yang pool viwe sesuai pesanan. untuk sarapannya cukup variatif
+                                    standar
+                                    hotel bintang 5. Ada kegiatan anak juga di sekitar kolam renang, membuat anak2
+                                    tambah
+                                    gembira dengan pembawa acara yang atraktif, dan komunikatif dgn anak2 menambah
+                                    pengalaman anak cara membuat kue mochi yg berasal dari jepang dan di populerkan di
+                                    china. Kolam renang nya besarrr dan ada kolam renang anak yang dilengkapi permainan
+                                    prosotan balon juga, sangat menyenangkan dan recomend utk staycation di
+                                    jogja.pokoknya
+                                    seru dan menyenangkan, ga cukup 1 malam utk menjelajahi hotel ini secara
+                                    keseluruhan,
+                                    next time ke sini lg..</p>
+                                <div class="edit-delete-buttons">
+                                    <a href="/ubahUlasan" class="btn-edit" title="Edit Review"><i class="fa fa-pencil"></i>
+                                        Edit</a>
+                                    <a href="#" class="btn-delete" title="Delete Review"><i class="fa fa-trash"></i>
+                                        Delete</a>
+                                </div>
+                            </div>
                         </div>
-                    @endforelse
-
+                    </div>
+                    <div class="col-lg-12 card">
+                        <div class="review-box">
+                            <div class="review-content text-center">
+                                <p style="font-size: 24px">Fadilah Ana</p>
+                                <div class="stars">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </div>
+                                <p style="font-size: 16px">2 hari menginap di hotel Borobudur. Hotel legendaris, nuansa
+                                    Indonesia yang sudah modern. Staff nya ramah, makanannya enak, kamarpun bersih, ada
+                                    wahana untuk anak bermain dan berenang, jogging track nya juga nyaman dan asri
+                                    ditengah
+                                    kota Jogja.!</p>
+                                <div class="edit-delete-buttons">
+                                    <a href="/ubahUlasan" class="btn-edit" title="Edit Review"><i class="fa fa-pencil"></i>
+                                        Edit</a>
+                                    <a href="#" class="btn-delete" title="Delete Review"><i class="fa fa-trash"></i>
+                                        Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 card">
+                        <div class="review-box">
+                            <div class="review-content text-center">
+                                <p style="font-size: 24px">Purbiantoro Ipung</p>
+                                <div class="stars">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </div>
+                                <p style="font-size: 16px">
+                                    Rasanya spt di dunia Dongeng..kamarnya berkelas banget,Pelayanannya sangat ramah
+                                    dan
+                                    cepat tanggap…jd benar2 kita di sambut…spt Tamu kehormatan..pokoknya Borobudur
+                                    Hotel..Yes!! Lokasinya strategis.</p>
+                                <div class="edit-delete-buttons">
+                                    <a href="/ubahUlasan" class="btn-edit" title="Edit Review"><i class="fa fa-pencil"></i>
+                                        Edit</a>
+                                    <a href="#" class="btn-delete" title="Delete Review"><i class="fa fa-trash"></i>
+                                        Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="click">
+                        <a href="/buatUlasan" class="btn-review">BUAT ULASAN</a>
+                    </div>
                 </div>
             </div>
         </div>

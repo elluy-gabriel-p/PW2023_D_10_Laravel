@@ -20,7 +20,7 @@ class RegisterController extends Controller
     {
         $file = $request->file('image');
         $filename = time() . '.' . $file->getClientOriginalExtension();
-        $file->move(public_path('/images'), $filename);
+        $file->move(public_path('/images/profile'), $filename);
 
         $str = Str::random(100);
         $user = User::create([
