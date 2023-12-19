@@ -54,7 +54,7 @@
         .wrapper {
             position: relative;
             width: 60%;
-            height: auto;
+            height: 550px;
             background: white;
             border-radius: 10px;
         }
@@ -115,6 +115,9 @@
         </div>
         <div class="wrapper">
             <div class="form-box Registration">
+                @if (session('message'))
+                    <div class="alert alert-success">{{ session('message') }}</div>
+                @endif
                 <h1>Register</h1>
                 @if (session('message'))
                     <div class="alert alert-success">{{ session('message') }}</div>
