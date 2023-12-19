@@ -54,7 +54,7 @@ class KamarController extends Controller
         $image = $request->file('image');
         $ruang_ekstensi = $image->getClientOriginalExtension();
         $ruang_nama = time() . '.' . $ruang_ekstensi;
-        $image->move(public_path('images/kamar'), $ruang_nama);
+        $image->move(public_path('images/kamar'), $ruang_nama); // untuk save image
 
         //Fungsi Simpan Data ke dalam Database
         Kamar::create([

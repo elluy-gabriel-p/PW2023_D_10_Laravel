@@ -56,7 +56,7 @@ class BookingController extends Controller
         Booking::create($validatedData);
 
         return redirect('/room')->with('success', 'Booking telah ditambahkan');
-    }
+    } // Invoice Booking
 
     /**
      * Display the specified resource.
