@@ -14,6 +14,8 @@ class BookingController extends Controller
     public function index()
     {
         return view('user.booking', [
+            // ...
+
             'bookings' => Booking::latest()->get()
         ]);
     }

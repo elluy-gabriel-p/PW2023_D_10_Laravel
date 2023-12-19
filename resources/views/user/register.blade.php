@@ -122,6 +122,7 @@
                 @if (session('message'))
                     <div class="alert alert-success">{{ session('message') }}</div>
                 @endif
+                <h1>Register</h1>
                 <hr>
                 <form class="row g-3 needs-validation" action="{{ route('actionRegister') }}" method="POST"
                     enctype="multipart/form-data">

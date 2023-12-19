@@ -105,13 +105,6 @@
         </div>
     </div>
 
-    @if (session()->has('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
-
     <div class="page-content">
         <div class="container">
             <div class="row justify-content-center">
@@ -123,8 +116,8 @@
                                 <p class="text-white" style="font-size: 24px">AVALAIBLE FROM Rp. {{ $item->harga }}</p>
                                 <p class="text-white" style="text-decoration: none;">{{ $item->fasilitas }}</p>
                                 <div class="click">
-                                    <a href="/review" class="btn-ulas">REVIEW</a>
-                                    <a class="btn-booking" href="/booking/create" role="button">
+                                    <a href="/ulasanKamar" class="btn-ulas">REVIEW</a>
+                                    <a class="btn-booking" href="{{ asset('/buatBooking') }}" role="button">
                                         BOOK NOW</a>
                                 </div>
                             </div>

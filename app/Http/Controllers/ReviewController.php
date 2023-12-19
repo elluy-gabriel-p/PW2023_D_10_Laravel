@@ -13,6 +13,8 @@ class ReviewController extends Controller
     public function index()
     {
         return view('user.ulasanKamar', [
+            // ...
+
             'reviews' => Review::latest()->get()
         ]);
     }
