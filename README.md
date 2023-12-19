@@ -4,6 +4,8 @@
 
 ### Anggota Kelompok
 Elluy Gabriel Panambe (210711306)
+Kevin Edgard Halim (210711376)
+Charisma Dewa Putra Ma'dika (210711255)
 
 ### Username dan Password Login
 •	Login User
