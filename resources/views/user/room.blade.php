@@ -109,7 +109,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 @forelse ($room as $item)
-                    <div class="col-lg-5 card">
+                    <div class="col-lg-5 card" style="background-image: {{ url('images/kamar') . '/' . $item->image }}">
                         <div class="preview-box">
                             <div class="preview-content">
                                 <p class="text-white" style="text-decoration: none; font-size: 36px">{{ $item->jenis }}</p>

@@ -84,23 +84,32 @@
         }
     </style>
     <div class="isi">
+        @if (session('error'))
+            <div class="alert alert-danger"
+                style="position: fixed; top: 10%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;">
+                <b>Oops!</b> {{ session('error') }}
+            </div>
+        @endif
         <div class="wrapper">
             <div class="form-box login">
                 <h1>Login</h1>
-                <form class="row g-3 needs-validation" novalidate action="{{ asset('/dashboard') }}">
+                <form class="row g-3 needs-validation" novalidate action="{{ route('actionLoginAdmin') }}"
+                    method="POST">
+                    @csrf
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
                         <div class="form-floating text-muted">
-                            <input type="text" class="form-control" id="InputUsername1"
-                                placeholder="Masukkan Username" required />
-                            <label class="form-label" style="font-weight: bold" for="InputUsername1">Username</label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                value="{{ old('email') }}" placeholder="Masukkan Email"
+                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required />
+                            <label class="form-label" style="font-weight: bold" for="email">Email</label>
                         </div>
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon2"><i class="fa-solid fa-lock"></i></span>
                         <div class="form-floating text-muted">
-                            <input type="password" class="form-control" id="InputPassword1"
-                                placeholder="Masukkan Password" required />
+                            <input type="password" class="form-control" id="passworrd" name="password"
+                                value="{{ old('password') }}" placeholder="Masukkan Password" required />
                             <i id="togglePassword" class="bi bi-eye-slash"></i>
                             <label for="InputPassword1" class="form-label" style="font-weight: bold">Password</label>
                         </div>

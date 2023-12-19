@@ -68,8 +68,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-footer">
-                    <form onsubmit="return confirm('Apakah Anda Yakin ?');"
-                        action="{{ route('profile.destroy', Auth::user()->id) }}" method="POST">
+                    <form action="{{ route('profile.destroy', Auth::user()->id) }}" method="POST">
                         <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
                         @csrf
                         @method('DELETE')

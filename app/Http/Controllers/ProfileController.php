@@ -11,11 +11,10 @@ use Faker\Core\Files;
 
 class ProfileController extends Controller
 {
-
     public function index()
     {
-        $user = User::latest()->paginate(5);
-        return view('user.profile', compact('user'));
+        $profile = User::latest()->paginate(5);
+        return view('user.profile', compact('profile'));
     }
 
     /**
@@ -26,8 +25,8 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        return view('user.editProfile', compact('user'));
+        $profile = User::find($id);
+        return view('user.editProfile', compact('profile'));
     }
 
     /**
@@ -39,17 +38,16 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
+        $profile = User::find($id);
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required',
             'no_telp' => 'required',
             'umur' => 'required',
             'image' => 'mimes:png,jpg,jpeg,svg,webp',
-            'status' => 'required'
         ]);
 
-        $user->update([
+        $profile->update([
             'name' => $request->name,
             'email' => $request->email,
             'no_telp' => $request->no_telp,
@@ -69,10 +67,11 @@ class ProfileController extends Controller
             $profile = User::find($id);
             File::delete('images/profile/' . $profile->image);
 
-            $user->update([
+            $profile->update([
                 'image' => $profile_nama
             ]);
         }
+
         return redirect()->route('profile.index')->with(['success' => 'Data
         Berhasil Diubah!']);
     }
@@ -86,9 +85,9 @@ class ProfileController extends Controller
 
     public function destroy($id)
     {
-        $user = User::find($id);
-        File::delete('images/profile/' . $user->image);
-        $user->delete();
+        $profile = User::find($id);
+        File::delete('images/profile/' . $profile->image);
+        $profile->delete();
         return redirect()->route('actionLogout')->with(['success' => 'Data
          Berhasil Dihapus!']);
     }
