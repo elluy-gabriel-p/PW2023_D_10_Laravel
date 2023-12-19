@@ -70,10 +70,10 @@ class UserController extends Controller
             $image = $request->file('image');
             $profile_ekstensi = $image->getClientOriginalExtension();
             $profile_nama = time() . '.' . $profile_ekstensi;
-            $image->move(public_path('public/images'), $profile_nama);
+            $image->move(public_path('/images/profile'), $profile_nama);
 
             $profile = User::find($id);
-            File::delete('public/images/' . $profile->image);
+            File::delete('images/profile/' . $profile->image);
 
             $user->update([
                 'image' => $profile_nama
@@ -94,7 +94,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
-        File::delete('public/images/' . $user->image);
+        File::delete('images/profile/' . $user->image);
         $user->delete();
         return redirect()->route('user.index')->with(['success' => 'Data
          Berhasil Dihapus!']);

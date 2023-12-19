@@ -54,7 +54,7 @@
         .wrapper {
             position: relative;
             width: 60%;
-            height: 500px;
+            height: 550px;
             background: white;
             border-radius: 10px;
         }
@@ -113,11 +113,11 @@
                 <img src="{{ asset('img/IMPERIAL LOGO.png') }}" alt="Logo" class="imperial-logo">
             </a>
         </div>
-        @if (session('message'))
-            <div class="alert alert-success">{{ session('message') }}</div>
-        @endif
         <div class="wrapper">
             <div class="form-box Registration">
+                @if (session('message'))
+                    <div class="alert alert-success">{{ session('message') }}</div>
+                @endif
                 <h1>Register</h1>
                 <hr>
                 <form class="row g-3 needs-validation" action="{{ route('actionRegister') }}" method="POST"
