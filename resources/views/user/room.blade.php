@@ -108,14 +108,13 @@
     <div class="page-content">
         <div class="container">
             <div class="row justify-content-center">
-                @foreach ($rooms as $row)
+                @forelse ($room as $item)
                     <div class="col-lg-5 card">
                         <div class="preview-box">
                             <div class="preview-content">
-                                <p class="text-white" style="text-decoration: none; font-size: 36px">{{ $row['tipe'] }}</p>
-                                <p class="text-white" style="font-size: 24px">AVALAIBLE FROM Rp. {{ $row['price'] }}</p>
-                                <p class="text-white" style="text-decoration: none;">{{ $row['total_beds'] }}
-                                    beds</p>
+                                <p class="text-white" style="text-decoration: none; font-size: 36px">{{ $item->jenis }}</p>
+                                <p class="text-white" style="font-size: 24px">AVALAIBLE FROM Rp. {{ $item->harga }}</p>
+                                <p class="text-white" style="text-decoration: none;">{{ $item->fasilitas }}</p>
                                 <div class="click">
                                     <a href="/ulasanKamar" class="btn-ulas">REVIEW</a>
                                     <a class="btn-booking" href="{{ asset('/buatBooking') }}" role="button">
@@ -124,7 +123,11 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @empty
+                    <div class="alert alert-danger">
+                        Belum Ada kamar yang tersedia
+                    </div>
+                @endforelse
             </div>
         </div>
     </div>

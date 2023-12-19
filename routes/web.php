@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KamarController;
+use App\Http\Controllers\RoomController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
@@ -47,6 +48,8 @@ Route::resource('/revew', ReviewController::class);
 
 Route::resource('/kamar', KamarController::class);
 
+Route::resource('/room', RoomController::class);
+
 
 // Route::get('/', function () {
 //     return view('user/home');
@@ -76,9 +79,9 @@ Route::get('/profile', function () {
     return view('user/profile');
 });
 
-Route::get('/editProfile', function () {
-    return view('user/editProfile');
-});
+// Route::get('/editProfile', function () {
+//     return view('user/editProfile');
+// });
 
 Route::get('/ulasanKamar', function () {
     return view('user/ulasanKamar');
@@ -92,54 +95,54 @@ Route::get('/ubahUlasan', function () {
     return view('user/formEditUlasan');
 });
 
-Route::get('/room', function () {
-    return view('user/room', [
-        'rooms' => [
-            [
-                'id' => 1,
-                'featured_photo' => asset('img/room1.png'),
-                'price' => '1.000.000',
-                "total_beds" => 2,
-                "deskripsi" => "Welcome to the Presidential Room, Where Luxury Meets Elegance. Our Most Exclusive Accommodation Offers Impeccable Comfort and Unparalleled Opulence. Experience the Epitome of Grandeur and Unwind in Style in the Presidential Room.",
-                "tipe" => "President Room",
-                "status" => "terisi"
-            ],
+// Route::get('/room', function () {
+//     return view('user/room', [
+//         'rooms' => [
+//             [
+//                 'id' => 1,
+//                 'featured_photo' => asset('img/room1.png'),
+//                 'price' => '1.000.000',
+//                 "total_beds" => 2,
+//                 "deskripsi" => "Welcome to the Presidential Room, Where Luxury Meets Elegance. Our Most Exclusive Accommodation Offers Impeccable Comfort and Unparalleled Opulence. Experience the Epitome of Grandeur and Unwind in Style in the Presidential Room.",
+//                 "tipe" => "President Room",
+//                 "status" => "terisi"
+//             ],
 
-            [
-                'id' => 2,
-                'featured_photo' => asset('img/room2.jpg'),
-                'price' => '750.000',
-                "total_beds" => 3,
-                "deskripsi" =>
-                "Experience Quality Time Together in Our Spacious Family Room. Designed with Your Comfort and Convenience in Mind, Our Family Room Provides a Cozy Retreat for You and Your Loved Ones. Create Cherished Memories with Your Family in Our Welcoming Accommodation.",
-                "tipe" => "Family Room",
-                "status" => "tersedia"
-            ],
+//             [
+//                 'id' => 2,
+//                 'featured_photo' => asset('img/room2.jpg'),
+//                 'price' => '750.000',
+//                 "total_beds" => 3,
+//                 "deskripsi" =>
+//                 "Experience Quality Time Together in Our Spacious Family Room. Designed with Your Comfort and Convenience in Mind, Our Family Room Provides a Cozy Retreat for You and Your Loved Ones. Create Cherished Memories with Your Family in Our Welcoming Accommodation.",
+//                 "tipe" => "Family Room",
+//                 "status" => "tersedia"
+//             ],
 
-            [
-                'id' => 3,
-                'featured_photo' => asset('img/room3.jpg'),
-                'price' => '250.000',
-                "total_beds" => 1,
-                "deskripsi" =>
-                "Discover Tranquil Simplicity in Our Single Room. Perfect for Solo Travelers, Our Single Room Offers a Cozy Sanctuary for Rest and Relaxation. Experience Comfort and Privacy in Your Personal Haven.",
-                "tipe" => "Single Room",
-                "status" => "terisi"
-            ],
+//             [
+//                 'id' => 3,
+//                 'featured_photo' => asset('img/room3.jpg'),
+//                 'price' => '250.000',
+//                 "total_beds" => 1,
+//                 "deskripsi" =>
+//                 "Discover Tranquil Simplicity in Our Single Room. Perfect for Solo Travelers, Our Single Room Offers a Cozy Sanctuary for Rest and Relaxation. Experience Comfort and Privacy in Your Personal Haven.",
+//                 "tipe" => "Single Room",
+//                 "status" => "terisi"
+//             ],
 
-            [
-                'id' => 4,
-                'featured_photo' => asset('img/room4.jpg'),
-                'price' => '500.000',
-                "total_beds" => 2,
-                "deskripsi" =>
-                "Double the Comfort, Twice the Enjoyment. Our Twin Room is Ideal for Travelers Seeking Individual Space and Comfort. With Two Cozy Beds and Thoughtful Amenities, This Room Offers the Perfect Balance of Togetherness and Personal Relaxation.",
-                "tipe" => "Twin Room",
-                "status" => "tersedia"
-            ],
-        ],
-    ]);
-});
+//             [
+//                 'id' => 4,
+//                 'featured_photo' => asset('img/room4.jpg'),
+//                 'price' => '500.000',
+//                 "total_beds" => 2,
+//                 "deskripsi" =>
+//                 "Double the Comfort, Twice the Enjoyment. Our Twin Room is Ideal for Travelers Seeking Individual Space and Comfort. With Two Cozy Beds and Thoughtful Amenities, This Room Offers the Perfect Balance of Togetherness and Personal Relaxation.",
+//                 "tipe" => "Twin Room",
+//                 "status" => "tersedia"
+//             ],
+//         ],
+//     ]);
+// });
 
 Route::get('/booking', function () {
     return view('user/booking', [
@@ -237,17 +240,17 @@ Route::get('/dashboard', function () {
 //         ],
 //     ]);
 // });
-Route::get('/editUser', function () {
-    return view('admin/editUser');
-});
+// Route::get('/editUser', function () {
+//     return view('admin/editUser');
+// });
 
-Route::get('/editKamar', function () {
-    return view('admin/editKamar');
-});
+// Route::get('/editKamar', function () {
+//     return view('admin/editKamar');
+// });
 
-Route::get('/addKamar', function () {
-    return view('admin/addKamar');
-});
+// Route::get('/addKamar', function () {
+//     return view('admin/addKamar');
+// });
 
 // Route::get('/kamar', function () {
 //     return view('admin/kamar', [
