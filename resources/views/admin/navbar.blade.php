@@ -154,6 +154,12 @@
                                 <p> Kamar </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ url('admin/review') }}" class="nav-link">
+                                <i class="nav-icon fa-solid fa-star"></i>
+                                <p> Review </p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
 
@@ -178,7 +184,8 @@
             </div>
 
             <!-- Default to the left -->
-            <strong>Copyright &copy; {{ date('Y') }} <a href="#">Imperial</a>. </strong> All rights reserved.
+            <strong>Copyright &copy; {{ date('Y') }} <a href="#">Imperial</a>. </strong> All rights
+            reserved.
         </footer>
     </div>
 
