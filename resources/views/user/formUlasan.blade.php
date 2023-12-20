@@ -92,31 +92,30 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="card col-md-6">
-                    <form method="POST">
+                    <form method="post" action="/review" enctype="multipart/form-data">
+                        @csrf
                         <div class="form-group">
-                            <label>Nama</label>
-                            <input class="form-control" type="text">
+                            <label for="reviewerName">Nama</label>
+                            <input class="form-control" type="text" name="reviewerName" id="reviewerName"
+                                value="{{ auth()->user()->name }}" readonly>
                         </div>
+                        <input class="form-control" type="text" name="id_kamar" id="id_kamar"
+                            value="{{ $kamar->id }}" readonly hidden>
                         <div class="form-group">
                             <label>Nilai (1-5)</label><br>
-                            <input type="radio" id="nilai1" name="rating" value="1">
-                            <label for="nilai1">1</label>
-                            <input type="radio" id="nilai2" name="rating" value="2">
-                            <label for="nilai2">2</label>
-                            <input type="radio" id="nilai3" name="rating" value="3">
-                            <label for="nilai3">3</label>
-                            <input type="radio" id="nilai4" name="rating" value="4">
-                            <label for="nilai4">4</label>
-                            <input type="radio" id="nilai5" name="rating" value="5">
-                            <label for="nilai5">5</label>
+                            @for ($i = 1; $i <= 5; $i++)
+                                <input type="radio" id="rating{{ $i }}" name="rating"
+                                    value="{{ $i }}" required>
+                                <label for="rating{{ $i }}">{{ $i }}</label>
+                            @endfor
                         </div>
                         <div class="form-group">
-                            <label>Komentar</label>
-                            <textarea class="form-control" rows="12"></textarea>
+                            <label for="comment">Komentar</label>
+                            <textarea class="form-control" rows="12" name="comment" id="comment" required></textarea>
                         </div>
                         <div class="click">
-                            <a href="/ulasanKamar" class="btn-batal">Batal</a>
-                            <a href="/ulasanKamar" class="btn-kirim" type="submit">Kirim</a>
+                            <a href="{{ URL::previous() }}" class="btn btn-batal">Batal</a>
+                            <button class="btn btn-kirim" type="submit">Kirim</button>
                         </div>
                     </form>
                 </div>

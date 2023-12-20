@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KamarController;
-use App\Http\Controllers\RoomController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
@@ -43,13 +42,14 @@ Route::resource('/user', UserController::class);
 Route::resource('/profile', ProfileController::class);
 
 Route::resource('/booking', BookingController::class);
+Route::get('/booking/{id}/create/', [BookingController::class, 'create'])->name('create')->middleware('auth');
 
-Route::resource('/revew', ReviewController::class);
+Route::resource('/review', ReviewController::class);
+Route::get('/review/{id}/create/', [ReviewController::class, 'create'])->name('createReview')->middleware('auth');
+Route::get('/admin/review', [ReviewController::class, 'indexAdmin'])->name('indexAdmin')->middleware('auth');
 
 Route::resource('/kamar', KamarController::class);
-
-Route::resource('/room', RoomController::class);
-
+Route::get('/room', [KamarController::class, 'userIndex'])->name('userIndex')->middleware('auth');
 
 // Route::get('/', function () {
 //     return view('user/home');
@@ -79,9 +79,9 @@ Route::get('/profile', function () {
     return view('user/profile');
 })->middleware('auth');
 
-// Route::get('/editProfile', function () {
-//     return view('user/editProfile');
-// });
+Route::get('/editProfile', function () {
+    return view('user/editProfile');
+});
 
 Route::get('/ulasanKamar', function () {
     return view('user/ulasanKamar');
@@ -184,46 +184,6 @@ Route::get('/ubahUlasan', function () {
 //     ]);
 // });
 
-Route::get('/booking', function () {
-    return view('user/booking', [
-        'bookings' => [
-            [
-                'bookingID' => '12345',
-                'checkInDate' => 'Januari 25, 2024',
-                'checkOutDate' => 'Januari 26, 2024',
-                'roomType' => 'President Room',
-                'guestName' => 'John Doe',
-                'guestEmail' => 'john@gmail.com',
-                'guestPhone' => '03249342938',
-                'people' => '2',
-                'totalAmount' => '2.500.000',
-            ],
-            [
-                'bookingID' => '67890',
-                'checkInDate' => 'Februari 17, 2024',
-                'checkOutDate' => 'Februari 20, 2024',
-                'roomType' => 'Family Room',
-                'guestName' => 'Alice Smith',
-                'guestEmail' => 'alice@yahoo.com',
-                'guestPhone' => '0437932847',
-                'people' => '3',
-                'totalAmount' => '3.500.000',
-            ],
-            [
-                'bookingID' => '13579',
-                'checkInDate' => 'Maret 10, 2024',
-                'checkOutDate' => 'Maret 14, 2024',
-                'roomType' => 'Twin Room',
-                'guestName' => 'Bob Johnson',
-                'guestEmail' => 'bob@outlook.com',
-                'guestPhone' => '083623474234',
-                'people' => '2',
-                'totalAmount' => '1.000.00',
-            ],
-        ],
-    ]);
-});
-
 
 Route::get('/buatBooking', function () {
     return view('user/formBooking');
@@ -280,17 +240,17 @@ Route::get('/dashboard', function () {
 //         ],
 //     ]);
 // });
-// Route::get('/editUser', function () {
-//     return view('admin/editUser');
-// });
+Route::get('/editUser', function () {
+    return view('admin/editUser');
+});
 
-// Route::get('/editKamar', function () {
-//     return view('admin/editKamar');
-// });
+Route::get('/editKamar', function () {
+    return view('admin/editKamar');
+});
 
-// Route::get('/addKamar', function () {
-//     return view('admin/addKamar');
-// });
+Route::get('/addKamar', function () {
+    return view('admin/addKamar');
+});
 
 // Route::get('/kamar', function () {
 //     return view('admin/kamar', [
