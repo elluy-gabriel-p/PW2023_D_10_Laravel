@@ -69,7 +69,7 @@
                             </div>
                         </div>
                     </div>
-                </div>\
+                </div>
         @endif
     @empty
         <div class="alert alert-danger">

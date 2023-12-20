@@ -155,6 +155,12 @@
                                 <p> Kamar </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ url('review') }}" class="nav-link">
+                                <i class="nav-icon fa-solid fa-star"></i>
+                                <p> Review </p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
 

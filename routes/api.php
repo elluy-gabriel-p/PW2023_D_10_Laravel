@@ -14,15 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/register', [App\Http\Controllers\Api\AuthController::class, 'register']);
-Route::post('/login', [App\Http\Controllers\Api\AuthController::class, 'login']);
+// Route::post('/register', [App\Http\Controllers\Api\AuthController::class, 'register']);
+// Route::post('/login', [App\Http\Controllers\Api\AuthController::class, 'login']);
 
-Route::group(['middleware' => 'auth:api'], function () {
+// Route::group(['middleware' => 'auth:api'], function () {
 
-    Route::get('/user', [App\Http\Controllers\Api\UsersController::class, 'index']);
-    Route::get('/user/{id}', [App\Http\Controllers\Api\UsersController::class, 'show']);
-    Route::put('/user/{id}', [App\Http\Controllers\Api\UsersController::class, 'update']);
-    Route::delete('/user/{id}', [App\Http\Controllers\Api\UsersController::class, 'destroy']);
-});
+//     Route::get('/user', [App\Http\Controllers\Api\UsersController::class, 'index']);
+//     Route::get('/user/{id}', [App\Http\Controllers\Api\UsersController::class, 'show']);
+//     Route::put('/user/{id}', [App\Http\Controllers\Api\UsersController::class, 'update']);
+//     Route::delete('/user/{id}', [App\Http\Controllers\Api\UsersController::class, 'destroy']);
+// });
 
 Route::post('/book', [App\Http\Controllers\Api\BookingController::class, 'store']);
