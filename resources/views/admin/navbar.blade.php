@@ -156,7 +156,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('admin/review') }}" class="nav-link">
+                            <a href="{{ url('review') }}" class="nav-link">
                                 <i class="nav-icon fa-solid fa-star"></i>
                                 <p> Review </p>
                             </a>

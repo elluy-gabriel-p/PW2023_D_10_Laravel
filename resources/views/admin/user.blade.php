@@ -36,7 +36,10 @@
                             <div class="col-md-4">
                                 <div class="card-block text-center">
                                     <div class="m-b-25">
-                                        <img src="{{ $item->image }}" class="img-radius" alt="User-Profile-Image">
+                                        @if ($item->image)
+                                            <img src="{{ url('images/profile') . '/' . $item->image }}" class="img-radius"
+                                                alt="User-Profile-Image">
+                                        @endif
                                     </div>
                                     <h6 class="text-white">{{ $item->name }}</h6>
                                     <p class="text-white">
@@ -67,7 +70,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
         @endif
     @empty
         <div class="alert alert-danger">

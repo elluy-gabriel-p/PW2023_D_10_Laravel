@@ -46,8 +46,6 @@ Route::resource('/booking', BookingController::class);
 Route::get('/booking/{id}/create/', [BookingController::class, 'create'])->name('create')->middleware('auth');
 
 Route::resource('/review', ReviewController::class);
-Route::get('/review/{id}/create/', [ReviewController::class, 'create'])->name('createReview')->middleware('auth');
-Route::get('/admin/review', [ReviewController::class, 'indexAdmin'])->name('indexAdmin')->middleware('auth');
 
 Route::resource('/kamar', KamarController::class);
 Route::get('/room', [KamarController::class, 'userIndex'])->name('userIndex')->middleware('auth');
@@ -80,9 +78,9 @@ Route::get('/about', function () {
 //     return view('user/profile');
 // })->middleware('auth');
 
-Route::get('/editProfile', function () {
-    return view('user/editProfile');
-});
+// Route::get('/editProfile', function () {
+//     return view('user/editProfile');
+// });
 
 Route::get('/ulasanKamar', function () {
     return view('user/ulasanKamar');
@@ -241,17 +239,17 @@ Route::get('/loginAdmin', function () {
 //         ],
 //     ]);
 // });
-Route::get('/editUser', function () {
-    return view('admin/editUser');
-});
+// Route::get('/editUser', function () {
+//     return view('admin/editUser');
+// });
 
-Route::get('/editKamar', function () {
-    return view('admin/editKamar');
-});
+// Route::get('/editKamar', function () {
+//     return view('admin/editKamar');
+// });
 
-Route::get('/addKamar', function () {
-    return view('admin/addKamar');
-});
+// Route::get('/addKamar', function () {
+//     return view('admin/addKamar');
+// });
 
 // Route::get('/kamar', function () {
 //     return view('admin/kamar', [

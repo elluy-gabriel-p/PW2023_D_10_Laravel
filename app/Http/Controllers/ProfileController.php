@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Exception;
 use App\Models\User;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
+use Faker\Core\Files;
 
 class ProfileController extends Controller
 {
@@ -46,12 +48,10 @@ class ProfileController extends Controller
         ]);
 
         $profile->update([
-
             'name' => $request->name,
             'email' => $request->email,
             'no_telp' => $request->no_telp,
             'umur' => $request->umur,
-            'image' => $request->image,
             'status' => 'user'
         ]);
 

@@ -53,7 +53,7 @@
                             <a class="nav-link" href="{{ asset('/about') }}">About us</a>
                         </li>
                         <li class="nav-item mx-3">
-                            <a class="nav-link" href="{{ asset('/room') }}">Kamar</a>
+                            <a class="nav-link" href="{{ url('room') }}">Kamar</a>
                         </li>
                         <li class="nav-item mx-3">
                             <a class="nav-link" href="{{ asset('/profile') }}">Profile</a>
