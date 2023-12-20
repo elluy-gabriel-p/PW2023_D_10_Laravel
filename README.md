@@ -3,7 +3,9 @@
 ## Kelas D Kelompok 10
 
 ### Anggota Kelompok
-Elluy Gabriel Panambe (210711306)
+- Elluy Gabriel Panambe (210711306)
+- Kevin Edgard Halim (210711376)
+- Charisma Dewa Ma'dika (210711255)
 
 ### Username dan Password Login
 •	Login User
