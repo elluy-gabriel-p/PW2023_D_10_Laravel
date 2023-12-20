@@ -35,8 +35,8 @@
     <div class="isi bg-secondary">
         <div class="wrapper">
             <div class="form-box Edit">
-                <form class="row g-3 needs-validation" novalidate ction="{{ route('user.update', $user->id) }}" method="POST"
-                    enctype="multipart/form-data">
+                <form action="{{ route('user.update', $user->id) }}" method="POST" enctype="multipart/form-data"
+                    class="row g-3">
                     @csrf
                     @method('PUT')
                     <div class="col-md-6">
@@ -122,7 +122,7 @@
                         </div>
                     </div>
                     <div class="button-container">
-                        <a href="{{ asset('/user') }}" type="button" class="btn btn-danger"><i
+                        <a href="{{ url('user') }}" type="button" class="btn btn-danger"><i
                                 class="fa-regular fa-trash-can"></i>
                             Cancel</a>
                         <button type="submit" class="btn btn-primary"><i class="fa-regular fa-floppy-disk"></i>

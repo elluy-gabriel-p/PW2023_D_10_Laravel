@@ -27,6 +27,7 @@ use App\Http\Controllers\DashboardController;
 Route::get('/', [LoginController::class, 'login'])->name('login');
 Route::get('adminLogin', [LoginController::class, 'adminLogin'])->name('adminLogin');
 Route::post('actionLogin', [LoginController::class, 'actionLogin'])->name('actionLogin');
+Route::post('actionLoginAdmin', [LoginController::class, 'actionLoginAdmin'])->name('actionLoginAdmin');
 
 Route::get('register', [RegisterController::class, 'register'])->name('register');
 Route::post('register/action', [RegisterController::class, 'actionRegister'])->name('actionRegister');
@@ -44,7 +45,7 @@ Route::resource('/profile', ProfileController::class);
 Route::resource('/booking', BookingController::class);
 Route::get('/booking/{id}/create/', [BookingController::class, 'create'])->name('create')->middleware('auth');
 
-Route::resource('/revew', ReviewController::class);
+Route::resource('/review', ReviewController::class);
 
 Route::resource('/kamar', KamarController::class);
 Route::get('/room', [KamarController::class, 'userIndex'])->name('userIndex')->middleware('auth');
@@ -73,13 +74,13 @@ Route::get('/about', function () {
     return view('user/about');
 });
 
-Route::get('/profile', function () {
-    return view('user/profile');
-})->middleware('auth');
+// Route::get('/profile', function () {
+//     return view('user/profile');
+// })->middleware('auth');
 
-Route::get('/editProfile', function () {
-    return view('user/editProfile');
-});
+// Route::get('/editProfile', function () {
+//     return view('user/editProfile');
+// });
 
 Route::get('/ulasanKamar', function () {
     return view('user/ulasanKamar');
@@ -196,9 +197,9 @@ Route::get('/loginAdmin', function () {
     return view('admin/login');
 });
 
-Route::get('/dashboard', function () {
-    return view('admin/dashboard');
-});
+// Route::get('/dashboard', function () {
+//     return view('admin/dashboard');
+// });
 
 // Route::get('/user', function () {
 //     return view('admin/user', [
@@ -238,17 +239,17 @@ Route::get('/dashboard', function () {
 //         ],
 //     ]);
 // });
-Route::get('/editUser', function () {
-    return view('admin/editUser');
-});
+// Route::get('/editUser', function () {
+//     return view('admin/editUser');
+// });
 
-Route::get('/editKamar', function () {
-    return view('admin/editKamar');
-});
+// Route::get('/editKamar', function () {
+//     return view('admin/editKamar');
+// });
 
-Route::get('/addKamar', function () {
-    return view('admin/addKamar');
-});
+// Route::get('/addKamar', function () {
+//     return view('admin/addKamar');
+// });
 
 // Route::get('/kamar', function () {
 //     return view('admin/kamar', [

@@ -31,7 +31,8 @@
             <div class="col-md-4">
                 <div class="card-block text-center">
                     <div class="m-b-25">
-                        <img src={{ Auth::user()->image }} class="img-radius" alt="User-Profile-Image">
+                        <img src="{{ url('images/profile') . '/' . Auth::user()->image }}" class="img-radius"
+                            alt="User-Profile-Image">
                     </div>
                     <h6 class="text-white">{{ Auth::user()->name }}</h6>
                     <a href="{{ route('profile.edit', Auth::user()->id) }}">
@@ -51,7 +52,7 @@
                     </a>
                     <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#logoutModal"
                         type="button">
-                        <i class="fa-solid fa-right-from-bracket"></i> Logout
+                        <i class="fa-solid fa-right-from-bracket"></i> Hapus Akun
                     </button>
                 </div>
             </div>
@@ -63,12 +64,16 @@
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header text-bg-primary">
-                    <h1 class="modal-title fs-5" id="logoutModalLabel">Apakah Ingin Logout ? </h1>
+                    <h1 class="modal-title fs-5" id="logoutModalLabel">Apakah Ingin Menghapus Akun Ini ? </h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a href="{{ asset('/loginUser') }}" class="btn btn-danger" type="button">Logout</a>
+                    <form action="{{ route('profile.destroy', Auth::user()->id) }}" method="POST">
+                        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                    </form>
                 </div>
             </div>
         </div>

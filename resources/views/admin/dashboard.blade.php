@@ -25,7 +25,7 @@
                         <div class="info-box-content">
                             <span class="info-box-text">Jumlah Booking Yang Ada</span>
                             <span class="info-box-number">
-                                10
+                                {{ $bookingCount }}
                             </span>
                         </div>
                         <!-- /.info-box-content -->
@@ -39,7 +39,7 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">Jumlah Kamar Yang Dimiliki</span>
-                            <span class="info-box-number">41</span>
+                            <span class="info-box-number">{{ $kamarCount }}</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -53,7 +53,7 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">Jumlah review yang diberikan</span>
-                            <span class="info-box-number">760</span>
+                            <span class="info-box-number">{{ $reviewCount }}</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -67,7 +67,7 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">Jumlah Member yang terdaftar</span>
-                            <span class="info-box-number">2,000</span>
+                            <span class="info-box-number">{{ $userCount }}</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
