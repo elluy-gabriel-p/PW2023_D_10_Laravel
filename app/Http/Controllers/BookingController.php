@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kamar;
 use App\Models\Booking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -14,18 +15,23 @@ class BookingController extends Controller
     public function index()
     {
         return view('user.booking', [
-            // ...
-
-            'bookings' => Booking::latest()->get()
+            // 'bookings' => Booking::where latest()->get()
+            'bookings' => Booking::where('user_id', auth()->user()->id)->latest()->get(),
+            'kamar' => Kamar::all()
         ]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($id)
     {
-        return view('user.formBooking');
+        // Find the Kamar model by its ID
+        $kamar = Kamar::findOrFail($id);
+
+        return view('user.formBooking', [
+            'kamar' => $kamar
+        ]);
     }
 
     /**
@@ -34,28 +40,26 @@ class BookingController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'guestName' => 'required',
-            'guestPhone' => 'required',
-            'guestEmail' => 'required',
-            'roomType' => 'required',
             'people' => 'required',
             'checkInDate' => 'required',
             'checkOutDate' => 'required'
         ]);
 
-        if ($validatedData['roomType'] === 'President Room') {
-            $totalAmount = $validatedData['people'] * 1000000;
-        } else if ($validatedData['roomType'] === 'Family Room') {
-            $totalAmount = $validatedData['people'] * 750000;
-        } else if ($validatedData['roomType'] === 'Single Room') {
-            $totalAmount = $validatedData['people'] * 500000;
-        } else {
-            $totalAmount = $validatedData['people'] * 250000;
-        }
+        $totalAmount = $request->harga * $validatedData['people'];
 
-        $validatedData['totalAmount'] = $totalAmount;
+        $bookingData = [
+            'people' => $validatedData['people'],
+            'checkInDate' => $validatedData['checkInDate'],
+            'checkOutDate' => $validatedData['checkOutDate'],
+            'guestName' => $request->guestName,
+            'guestPhone' => $request->guestPhone,
+            'guestEmail' => $request->guestEmail,
+            'user_id' => $request->user_id,
+            'id_kamar' => $request->id_kamar,
+            'totalAmount' => $totalAmount,
+        ];
 
-        Booking::create($validatedData);
+        Booking::create($bookingData);
 
         return redirect('/room')->with('success', 'Booking telah ditambahkan');
     }
@@ -74,7 +78,8 @@ class BookingController extends Controller
     public function edit(Booking $booking)
     {
         return view('user.editBooking', [
-            'booking' => $booking
+            'booking' => $booking,
+            'kamar' => Kamar::all()
         ]);
     }
 
@@ -84,25 +89,21 @@ class BookingController extends Controller
     public function update(Request $request, Booking $booking)
     {
         $validatedData = $request->validate([
-            'roomType' => 'required',
             'people' => 'required',
             'checkInDate' => 'required',
             'checkOutDate' => 'required'
         ]);
 
-        if ($validatedData['roomType'] === 'President Room') {
-            $totalAmount = $validatedData['people'] * 1000000;
-        } else if ($validatedData['roomType'] === 'Family Room') {
-            $totalAmount = $validatedData['people'] * 750000;
-        } else if ($validatedData['roomType'] === 'Twin Room') {
-            $totalAmount = $validatedData['people'] * 500000;
-        } else {
-            $totalAmount = $validatedData['people'] * 250000;
-        }
+        $totalAmount = $request->harga * $validatedData['people'];
 
-        $validatedData['totalAmount'] = $totalAmount;
+        $bookingData = [
+            'people' => $validatedData['people'],
+            'checkInDate' => $validatedData['checkInDate'],
+            'checkOutDate' => $validatedData['checkOutDate'],
+            'totalAmount' => $totalAmount,
+        ];
 
-        Booking::where('id', $booking->id)->update($validatedData);
+        Booking::where('id', $booking->id)->update($bookingData);
 
         return redirect('/booking')->with('success', 'Booking telah diedit');
     }

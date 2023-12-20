@@ -52,7 +52,7 @@
                             <a class="nav-link" href="{{ asset('/about') }}">About us</a>
                         </li>
                         <li class="nav-item mx-3">
-                            <a class="nav-link" href="{{ url('room') }}">Kamar</a>
+                            <a class="nav-link" href="{{ asset('/room') }}">Kamar</a>
                         </li>
                         <li class="nav-item mx-3">
                             <a class="nav-link" href="{{ asset('/profile') }}">Profile</a>
@@ -78,7 +78,7 @@
                                 <p> Tempat di Mana Kehangatan dan Kemewahan Menjadi Satu Pengalaman yang Abadi, Layanan
                                     Terbaik untuk Kenangan Terbaik, Nikmati Kemewahan Tanpa Batas di Jantung Kota!</p>
                             </div>
-                            <a class="btn book_btn" href="{{ asset('/buatBooking') }}" role="button">Book Now !</a>s
+                            <a class="btn book_btn" href="/room" role="button">Book Now !</a>s
                         </div>
                     </div>
                 </div>

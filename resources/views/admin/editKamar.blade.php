@@ -39,7 +39,8 @@
                                     <div class="mb-4">
                                         <label class="font-weight-bold">Jenis Kamar</label>
                                         <select class="form-control @error('jenis') is-invalid @enderror" name="jenis">
-                                            <option selected disabled>Pilih Jenis Kamar</option>
+                                            <option selected value="{{ old('jenis', $kamar->jenis) }}">{{ $kamar->jenis }}
+                                            </option>
                                             <option value="President Room">President Room</option>
                                             <option value="Family Room">Family Room</option>
                                             <option value="Single Room">Single Room</option>
@@ -67,7 +68,7 @@
                                     <div class="mb-4">
                                         <label class="font-weight-bold">Deskripsi</label>
                                         <textarea type="text" class="form-control @error('deskripsi') is-invalid @enderror" name="deskripsi"
-                                            value="{{ old('deskripsi', $kamar->deskripsi) }}" placeholder="Masukkan Deskripsi" rows="3"></textarea>
+                                            value="{{ old('deskripsi', $kamar->deskripsi) }}" placeholder="Masukkan Deskripsi" rows="3">{{ $kamar->deskripsi }}</textarea>
                                     </div>
                                     <div class="mb-4">
                                         <label class="font-weight-bold">Fasilitas</label>
@@ -83,7 +84,9 @@
                                             <label class="font-weight-bold">Status</label>
                                             <select class="form-control @error('status') is-invalid @enderror"
                                                 name="status">
-                                                <option disabled selected>Pilih Status Kamar...</option>
+                                                <option selected value="{{ old('status', $kamar->status) }}">
+                                                    {{ $kamar->status }}
+                                                </option>
                                                 <option value="Terisi">Terisi</option>
                                                 <option value="Tersedia">Tersedia</option>
                                                 <option value="Maintenance">Maintenance</option>

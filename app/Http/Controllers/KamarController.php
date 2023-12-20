@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Exception;
+use Faker\Core\Files;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use App\Models\Kamar; /* import model kamar */
-use Faker\Core\Files;
 
 class KamarController extends Controller
 {
@@ -23,6 +24,21 @@ class KamarController extends Controller
         return view('admin.kamar', compact('kamar'));
     }
 
+    public function userIndex()
+    {
+
+        return view('user.room', [
+            'kamar' => Kamar::where('status', 'Tersedia')->latest()->get()
+        ]);
+    }
+
+    public function show(Kamar $kamar)
+    {
+        return view('user.ulasanKamar', [
+            'kamar' => $kamar,
+            'reviews' => Review::where('id_kamar', $kamar->id)->get()
+        ]);
+    }
     /**
      * create
      *
