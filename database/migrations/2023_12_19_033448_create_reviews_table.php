@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('id_kamar')->references('id')->on('kamars');
+            $table->foreignId('user_id')->references('id')->on('users');
             $table->string('reviewerName');
             $table->integer('rating');
             $table->text('comment');

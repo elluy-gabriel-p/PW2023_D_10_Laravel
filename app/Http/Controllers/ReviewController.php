@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kamar;
 use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
@@ -13,8 +15,6 @@ class ReviewController extends Controller
     public function index()
     {
         return view('user.ulasanKamar', [
-            // ...
-
             'reviews' => Review::latest()->get()
         ]);
     }
@@ -28,11 +28,16 @@ class ReviewController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        return view('user.formUlasan');
-    }
 
+    public function create($id)
+    {
+        // Find the Kamar model by its ID
+        $kamar = Kamar::findOrFail($id);
+
+        return view('user.formUlasan', [
+            'kamar' => $kamar
+        ]);
+    }
     /**
      * Store a newly created resource in storage.
      */
@@ -44,9 +49,12 @@ class ReviewController extends Controller
             'comment' => 'required',
         ]);
 
+        $validatedData['user_id'] = Auth::user()->id;
+        $validatedData['id_kamar'] = $request->id_kamar;
+
         Review::create($validatedData);
 
-        return redirect('/review')->with('success', 'Review telah ditambahkan');
+        return redirect('/kamar/' . $request->id_kamar)->with('success', 'Review telah ditambahkan');
     }
 
     /**
@@ -78,9 +86,11 @@ class ReviewController extends Controller
             'comment' => 'required',
         ]);
 
+        $validatedData['id_kamar'] = $request->id_kamar;
+
         Review::where('id', $review->id)->update($validatedData);
 
-        return redirect('/review')->with('success', 'Review telah diedit');
+        return redirect('/kamar/' . $request->id_kamar)->with('success', 'Review telah diedit');
     }
 
     /**

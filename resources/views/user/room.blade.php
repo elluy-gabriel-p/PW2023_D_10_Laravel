@@ -14,7 +14,9 @@
             border-radius: .25rem;
             margin: 8px 8px;
             padding: 8px 8px;
-            background-image: url('https://mediastore.hotelcontent.net/7ee9523abe7e5e4977e6caacb066ee21/79521cdea3eff83/f0b94dd7bd081e8f24b4fc5576ce6f2a.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
         }
 
         .card-body {
@@ -105,6 +107,13 @@
         </div>
     </div>
 
+    @if (session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
     <div class="page-content">
         <div class="container">
             <div class="row justify-content-center">
@@ -116,8 +125,8 @@
                                 <p class="text-white" style="font-size: 24px">AVALAIBLE FROM Rp. {{ $item->harga }}</p>
                                 <p class="text-white" style="text-decoration: none;">{{ $item->fasilitas }}</p>
                                 <div class="click">
-                                    <a href="/ulasanKamar" class="btn-ulas">REVIEW</a>
-                                    <a class="btn-booking" href="{{ asset('/buatBooking') }}" role="button">
+                                    <a href="/kamar/{{ $item->id }}" class="btn-ulas">REVIEW</a>
+                                    <a class="btn-booking" href="/booking/{{ $item->id }}/create" role="button">
                                         BOOK NOW</a>
                                 </div>
                             </div>

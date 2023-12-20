@@ -53,7 +53,7 @@
                             <a class="nav-link" href="{{ asset('/about') }}">About us</a>
                         </li>
                         <li class="nav-item mx-3">
-                            <a class="nav-link" href="{{ url('room') }}">Kamar</a>
+                            <a class="nav-link" href="{{ asset('/room') }}">Kamar</a>
                         </li>
                         <li class="nav-item mx-3">
                             <a class="nav-link" href="{{ asset('/profile') }}">Profile</a>
@@ -78,7 +78,7 @@
                         <div class="col col-lg-5">
                             <h3>Contact US</h3>
                             <ul class="conta">
-                                <li><i class="fa-solid fa-location-dot"" aria-hidden="true"></i> Jl. Bener No.20,
+                                <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Jl. Bener No.20,
                                     Kota Yogyakarta, 55243
                                 </li>
                                 <li><i class="fa-solid fa-phone" aria-hidden="true"></i> +62 85171703304</li>

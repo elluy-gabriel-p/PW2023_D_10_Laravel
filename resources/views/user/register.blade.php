@@ -54,7 +54,7 @@
         .wrapper {
             position: relative;
             width: 60%;
-            height: 550px;
+            height: auto;
             background: white;
             border-radius: 10px;
         }
@@ -115,9 +115,6 @@
         </div>
         <div class="wrapper">
             <div class="form-box Registration">
-                @if (session('message'))
-                    <div class="alert alert-success">{{ session('message') }}</div>
-                @endif
                 <h1>Register</h1>
                 <hr>
                 <form class="row g-3 needs-validation" action="{{ route('actionRegister') }}" method="POST"
