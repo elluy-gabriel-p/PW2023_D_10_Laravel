@@ -97,8 +97,8 @@ class UsersController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('/images'), $filename);
-            $users->image = '/images/' . $filename;
+            $file->move(public_path('/images/profile'), $filename);
+            $users->image = $filename;
         }
 
         if ($users->save()) {

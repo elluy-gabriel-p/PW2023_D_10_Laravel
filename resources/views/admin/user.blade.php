@@ -27,9 +27,10 @@
             border-radius: 50%;
         }
     </style>
-    @forelse ($user as $item)
-        @if (is_object($item))
-            <div class="row row-cols-1 row-cols-md-2 g-4">
+
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        @forelse ($user as $item)
+            @if (is_object($item))
                 <div class="col">
                     <div class="card mb-3">
                         <div class="row g-0">
@@ -70,12 +71,12 @@
                         </div>
                     </div>
                 </div>
-        @endif
-    @empty
-        <div class="alert alert-danger">
-            Data User belum tersedia
-        </div>
-        </div>
-    @endforelse
+            @endif
+        @empty
+            <div class="alert alert-danger">
+                Data User belum tersedia
+            </div>
+        @endforelse
+    </div>
     {{ $user->links() }}
 @endsection

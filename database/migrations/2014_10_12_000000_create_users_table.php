@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('image');
             $table->integer('umur');
             $table->string('status');
-            $table->string('verify_key');
+            $table->string('verify_key')->nullable();;
             $table->integer('active')->nullable();
             $table->timestamps();
             $table->timestamp('email_verified_at')->nullable();

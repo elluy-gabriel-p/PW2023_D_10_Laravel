@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3307
--- Generation Time: Dec 19, 2023 at 09:10 PM
+-- Host: 127.0.0.1
+-- Generation Time: Dec 20, 2023 at 08:14 PM
 -- Server version: 10.4.28-MariaDB
--- PHP Version: 8.1.17
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -75,6 +75,16 @@ CREATE TABLE `kamars` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `kamars`
+--
+
+INSERT INTO `kamars` (`id`, `image`, `jenis`, `harga`, `deskripsi`, `fasilitas`, `status`, `created_at`, `updated_at`) VALUES
+(1, '1703099232.jpg', 'President Room', 10000, 'Kamar yang Nyaman dan Menjaga Kualitas Tidur Anda', 'kamar mandi, balkon, AC, Sauna, Wifi, TV', 'Tersedia', '2023-12-20 19:07:12', '2023-12-20 19:10:15'),
+(2, '1703099312.jpg', 'Family Room', 20000, 'Kamar yang Cocok  untuk Liburan keluarga', '3 kasur, AC, Wifi, kamar mamdi Yang Luas', 'Tersedia', '2023-12-20 19:08:32', '2023-12-20 19:08:32'),
+(3, '1703099399.jpg', 'Single Room', 5000, 'Cocok untuk anda yang ingin menyendiri', 'Wifi, Kamar Mandi', 'Tersedia', '2023-12-20 19:09:59', '2023-12-20 19:13:13'),
+(4, '1703099524.png', 'Twin Room', 7000, 'Cocok untuk pasagan baru menikah', 'TV, Kamar madi, Balkon, Hiasan Costum', 'Tersedia', '2023-12-20 19:12:04', '2023-12-20 19:12:04');
 
 -- --------------------------------------------------------
 
@@ -248,13 +258,21 @@ CREATE TABLE `users` (
   `image` varchar(255) NOT NULL,
   `umur` int(11) NOT NULL,
   `status` varchar(255) NOT NULL,
-  `verify_key` varchar(255) NOT NULL,
+  `verify_key` varchar(255) DEFAULT NULL,
   `active` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `remember_token` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `no_telp`, `password`, `image`, `umur`, `status`, `verify_key`, `active`, `created_at`, `updated_at`, `email_verified_at`, `remember_token`) VALUES
+(1, 'Elluy Gabriel Panambe', 'elluygabrielpanambe@gmail.com', '085171703304', '$2y$10$mpyH1XF7tAF1MIVNhhAt2OfXqNZHCUdx.zV5Mwpjr0N78HexAIuEK', '1703098782.png', 20, 'user', 'JddOGMV3jgCs8YTqOTtBWcIi1m5n1N7Kc5F6mFSKeMV0X7mstgqO3PNFB0cVp5WHMtJJAzbIx5nbzqnl7BECahAtv9xMRcf0flcN', 1, '2023-12-20 18:59:42', '2023-12-20 18:59:57', '2023-12-20 18:59:57', NULL),
+(2, 'Elluy Gabriel P', 'elluygabrielp@gmail.com', '085772360512', '$2y$10$/bNAGNIaDwY2nGNqkF9JR.I3mxCf0Sx4Jz6YUTamciEdIKGZDWGki', '1703098906.png', 22, 'admin', 'Rlci6Uxajmjs9fcjW6ULLmD2RNmjJCXcFzEikhZkzW5E9osYkW0PEOLkNHcPJASFQFqS1HLo2lQRHSbjWoBy3Mg47Omk4RkQ2jvr', 1, '2023-12-20 19:01:46', '2023-12-20 19:02:18', '2023-12-20 19:02:18', NULL);
 
 --
 -- Indexes for dumped tables
@@ -370,7 +388,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `kamars`
 --
 ALTER TABLE `kamars`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -406,7 +424,7 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

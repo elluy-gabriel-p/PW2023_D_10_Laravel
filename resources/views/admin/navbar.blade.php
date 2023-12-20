@@ -113,10 +113,11 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+                        <img src="{{ url('images/profile') . '/' . Auth::user()->image }}"
+                            class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block"> Elluy Gabriel Panambe </a>
+                        <a href="#" class="d-block"> {{ Auth::user()->name }} </a>
                     </div>
                 </div>
 
@@ -156,7 +157,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('review') }}" class="nav-link">
+                            <a href="{{ url('/admin/review') }}" class="nav-link">
                                 <i class="nav-icon fa-solid fa-star"></i>
                                 <p> Review </p>
                             </a>
