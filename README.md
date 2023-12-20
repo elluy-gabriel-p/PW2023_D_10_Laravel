@@ -8,14 +8,19 @@
 - Charisma Dewa Ma'dika (210711255)
 
 ### Username dan Password Login
-•	Login User
-
-        Username
-        Password
+* Login User
+    * Email : elluygabrielpanambe@gmail.com
+    * Password : user
         
-•	Login Admin
+* Login Admin
+    * Email : elluygabrielp@gmail.com
+    * Password : admin
 
-        Username
-        Password
-
+### Bonus Yang Diambil
+* Hosting:
+    *  Backend:
+    *  Frontend:
+* Routes API:
+    * POST /api/register - Create User
+    * POST /api/login - Login User
 
