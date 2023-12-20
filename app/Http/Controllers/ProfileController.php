@@ -9,11 +9,10 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-
     public function index()
     {
-        $user = User::latest()->paginate(5);
-        return view('user.profile', compact('user'));
+        $profile = User::latest()->paginate(5);
+        return view('user.profile', compact('profile'));
     }
 
     /**
@@ -24,8 +23,8 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        return view('user.editProfile', compact('user'));
+        $profile = User::find($id);
+        return view('user.editProfile', compact('profile'));
     }
 
     /**
@@ -37,15 +36,17 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
+        $profile = User::find($id);
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required',
             'no_telp' => 'required',
             'umur' => 'required',
-            'image' => 'required',
+            'image' => 'mimes:png,jpg,jpeg,svg,webp',
         ]);
-        $user->update([
+
+        $profile->update([
+
             'name' => $request->name,
             'email' => $request->email,
             'no_telp' => $request->no_telp,
@@ -53,6 +54,24 @@ class ProfileController extends Controller
             'image' => $request->image,
             'status' => 'user'
         ]);
+
+        if ($request->hasFile('image')) {
+            $request->validate([
+                'image' => 'required|mimes:png,jpg,jpeg,svg,webp'
+            ]);
+            $image = $request->file('image');
+            $profile_ekstensi = $image->getClientOriginalExtension();
+            $profile_nama = time() . '.' . $profile_ekstensi;
+            $image->move(public_path('/images/profile'), $profile_nama);
+
+            $profile = User::find($id);
+            File::delete('images/profile/' . $profile->image);
+
+            $profile->update([
+                'image' => $profile_nama
+            ]);
+        }
+
         return redirect()->route('profile.index')->with(['success' => 'Data
         Berhasil Diubah!']);
     }
@@ -66,9 +85,10 @@ class ProfileController extends Controller
 
     public function destroy($id)
     {
-        $user = User::find($id);
-        $user->delete();
-        return redirect()->route('profile.index')->with(['success' => 'Data
+        $profile = User::find($id);
+        File::delete('images/profile/' . $profile->image);
+        $profile->delete();
+        return redirect()->route('actionLogout')->with(['success' => 'Data
          Berhasil Dihapus!']);
     }
 }

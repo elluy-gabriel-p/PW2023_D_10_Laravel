@@ -91,7 +91,8 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <a href="{{ asset('/loginAdmin') }}" class="btn btn-danger" type="button">Logout</a>
+                        <a class="btn btn-danger" href="{{ route('actionLogout') }}" role="button"
+                            style="border:none;">Logout</a>
                     </div>
                 </div>
             </div>
