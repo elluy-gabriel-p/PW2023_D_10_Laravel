@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Booking extends Model
 {
     use HasFactory;
-  
     protected $guarded = ['id'];
     protected $primaryKey = 'id';
 

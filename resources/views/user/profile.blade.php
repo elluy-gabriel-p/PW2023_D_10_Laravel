@@ -67,12 +67,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-footer">
-                    <form action="{{ route('profile.destroy', Auth::user()->id) }}" method="POST">
-                        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
-                    </form>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="{{ asset('/loginUser') }}" class="btn btn-danger" type="button">Logout</a>
                 </div>
             </div>
         </div>
