@@ -25,6 +25,7 @@
                                         <tr>
                                             <th class="text-center">No</th>
                                             <th class="text-center">Reviewer Name</th>
+                                            <th class="text-center">Tipe Kamar</th>
                                             <th class="text-center">Rating</th>
                                             <th>Comment</th>
                                             <th class="text-center">Action</th>
@@ -36,6 +37,7 @@
                                             <tr>
                                                 <td class="text-center align-middle">{{ $loop->iteration }}</td>
                                                 <td class="text-center align-middle">{{ $review->reviewerName }}</td>
+                                                <td class="text-center align-middle">{{ $review->kamar->jenis }}</td>
                                                 <td class="text-center align-middle">{{ $review->rating }}</td>
                                                 <td>{{ $review->comment }}</td>
                                                 <td class="text-center align-middle">

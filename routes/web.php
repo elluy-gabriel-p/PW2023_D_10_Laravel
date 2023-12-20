@@ -46,6 +46,8 @@ Route::resource('/booking', BookingController::class);
 Route::get('/booking/{id}/create/', [BookingController::class, 'create'])->name('create')->middleware('auth');
 
 Route::resource('/review', ReviewController::class);
+Route::get('/review/{id}/create/', [ReviewController::class, 'create'])->name('createReview')->middleware('auth');
+Route::get('/admin/review', [ReviewController::class, 'indexAdmin'])->name('indexAdmin')->middleware('auth');
 
 Route::resource('/kamar', KamarController::class);
 Route::get('/room', [KamarController::class, 'userIndex'])->name('userIndex')->middleware('auth');
