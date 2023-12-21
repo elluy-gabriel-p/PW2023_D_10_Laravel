@@ -23,5 +23,5 @@
 * Routes API:
     * POST /api/register - Create User
     * GET /api/user - Tampil User
-    * PPOST /api/login - Login User
+    * POST /api/login - Login User
 
