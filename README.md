@@ -3,8 +3,8 @@
 ## Kelas D Kelompok 10
 
 ### Anggota Kelompok
-- Elluy Gabriel Panambe (210711306)
-- Kevin Edgard Halim (210711376)
+- Elluy Gabriel Panambe (210711306) - Autentikasi Email, CRUD Kamar dan Profile, API User
+- Kevin Edgard Halim (210711376) - Hosting, CRUD Booking dan Review
 - Charisma Dewa Ma'dika (210711255)
 
 ### Username dan Password Login
@@ -18,9 +18,10 @@
 
 ### Bonus Yang Diambil
 * Hosting:
-    *  Backend:
-    *  Frontend:
+    *  Backend: https://imperialhotel.my.id
+    *  Frontend: https://imperialhotel.my.id
 * Routes API:
     * POST /api/register - Create User
-    * POST /api/login - Login User
+    * GET /api/user - Tampil User
+    * PPOST /api/login - Login User
 
