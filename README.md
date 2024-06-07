@@ -1,12 +1,5 @@
 # UAS Pemrograman Web Gasal 2023/2024
 
-## Kelas D Kelompok 10
-
-### Anggota Kelompok
-- Elluy Gabriel Panambe (210711306) - Autentikasi Email, CRUD Kamar dan Profile, API User
-- Kevin Edgard Halim (210711376) - Deploy Hosting, Halaman Registrasi, CRUD Booking dan Review
-- Charisma Dewa Ma'dika (210711255) - Presentasi Video
-
 ### Username dan Password Login
 * Login User
     * Email : elluygabrielpanambe@gmail.com
